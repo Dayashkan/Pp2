@@ -12,8 +12,6 @@ namespace far_manager
         public string path;
         public int sz;
         public bool ok;
-        DirectoryInfo directory = null;
-        FileSystemInfo currentFs = null;
 
         public FarManager()
         {
@@ -49,7 +47,7 @@ namespace far_manager
             }
         }
         //hiding file starting with "."
-        public void Show()
+        public void Show(path)
         {
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
@@ -92,13 +90,13 @@ namespace far_manager
                         sz--;
         }
         //giving commands
-        public void Start()
+        public void Start(path)
         {
             ConsoleKeyInfo consoleKey = Console.ReadKey();
             while (consoleKey.Key != ConsoleKey.Escape)
             {
                 CalcSz();
-                Show();
+                Show(path);
                 consoleKey = Console.ReadKey();
                 if (consoleKey.Key == ConsoleKey.UpArrow)
                     Up();
@@ -136,7 +134,7 @@ namespace far_manager
     {
         static void Main(string[] args)
         {
-            string path = "C:\\Users\\user\\desktop";
+            string path = "C:\Users\Ceasar";
             FarManager farManager = new FarManager(path);
             farManager.Start();
         }
