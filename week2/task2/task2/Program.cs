@@ -11,9 +11,10 @@ namespace task2
     {
         static void Main(string[] args)
         {
-            bool isPrime() // функция для определения простых чисел 
+
+            bool isPrime(int x) // функция для определения простых чисел 
             {
-                int x;
+                
   
                 if (x == 1) return false;
                 if (x == 2) return true;
@@ -41,7 +42,7 @@ namespace task2
             string ans = "";
             for (int i = 0; i < a.Length; i++) // 
             {
-                if (isPrime(a[i]) == true)
+                if (isPrime(a[i])==true)
                 {
                     ans += a[i] + " "; // добавляет простые числа 
                 }

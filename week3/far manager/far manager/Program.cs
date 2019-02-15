@@ -136,7 +136,7 @@ namespace far_manager
         {
             string path = "C:\\Users\\Ceasar";
             FarManager farManager = new FarManager(path);
-            farManager.Start();
+            farManager.Start(path);
         }
     }
 }
