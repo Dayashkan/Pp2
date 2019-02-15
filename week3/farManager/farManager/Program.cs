@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace far_manager
 {
@@ -12,6 +13,8 @@ namespace far_manager
         public string path;
         public int sz;
         public bool ok;
+        DirectoryInfo directory = null;
+        FileSystemInfo currentFs = null;
 
         public FarManager()
         {
@@ -22,7 +25,7 @@ namespace far_manager
         {
             this.path = path;
             cursor = 0;
-            directory = new DirectoryInfo(path);
+            DirectoryInfo directory = new DirectoryInfo(path);
             sz = directory.GetFileSystemInfos().Length;
             ok = true;
         }
@@ -47,11 +50,11 @@ namespace far_manager
             }
         }
         //hiding file starting with "."
-        public void Show(path)
+        public void Show()
         {
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
-            directory = new DirectoryInfo(path);
+            DirectoryInfo  directory = new DirectoryInfo(path);
             FileSystemInfo[] fs = directory.GetFileSystemInfos();
             for (int i = 0, k = 0; i < fs.Length; i++)
             {
@@ -90,13 +93,13 @@ namespace far_manager
                         sz--;
         }
         //giving commands
-        public void Start(path)
+        public void Start()
         {
             ConsoleKeyInfo consoleKey = Console.ReadKey();
             while (consoleKey.Key != ConsoleKey.Escape)
             {
                 CalcSz();
-                Show(path);
+                Show();
                 consoleKey = Console.ReadKey();
                 if (consoleKey.Key == ConsoleKey.UpArrow)
                     Up();
@@ -134,9 +137,10 @@ namespace far_manager
     {
         static void Main(string[] args)
         {
-            string path = "C:\\Users\\Ceasar";
+            string path = "D:/Users/Ceasar/Desktop/pp2";
             FarManager farManager = new FarManager(path);
-            farManager.Start(path);
+            farManager.Start();
         }
     }
 }
+
